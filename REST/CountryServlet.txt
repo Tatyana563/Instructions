@@ -1,0 +1,29 @@
+public class CountryServlet extends HttpServlet {
+
+    @Autowired
+    private CountryService countryService;
+    private WebApplicationContext context;
+//init метод с General SErvlet
+// „то бы Spring задействовал весь механизм Autowired
+//beanFactory активирует все beans c @Service,@Component, @Repository+ CountryServlet тоже сделает Bean
+//private WebApplicationContext context - настройка Spring  дл€ web
+    @Override
+    public void init(final ServletConfig config) throws ServletException {
+        super.init(config);
+        context = WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext());
+        final AutowireCapableBeanFactory beanFactory = context.getAutowireCapableBeanFactory();
+        beanFactory.autowireBean(this);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter pw = response.getWriter();
+        pw.println("<ol>");
+        countryService.findAll().forEach(item->{
+            pw.print("<li>");
+            pw.print(item.getName());
+            pw.println("</li>");
+        });
+    }
+}

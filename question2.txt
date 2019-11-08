@@ -1,0 +1,35 @@
+
+elect* from town
+select* from street
+select* from country
+ALTER TABLE country 
+DROP COLUMN country_id;
+
+update building set street_id= '3' where street = 'street5';
+ALTER TABLE building DROP CONSTRAINT constraint_building_id ;
+
+
+
+
+create function get_min_city_area(p_country_id integer)
+returns numeric
+AS $$
+DECLARE l_min_area numeric;
+begin 
+select min(area) into l_min_area from town where country_id=p_country_id;
+return l_min_area;
+end;
+$$ LANGUAGE plpgsql;
+
+
+create or replace function get_city_with_area_location(p_country_id integer)
+returns character varying
+AS $$
+declare l_town_name character varying(100);
+begin
+select town_name into l_town_name
+from town where country_id=p_country_id AND area>20 AND location='north';
+
+return l_town_name;
+end;
+$$ LANGUAGE plpgsql;

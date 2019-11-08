@@ -1,0 +1,19 @@
+Example for id
+
+CountryController
+
+    @GetMapping("{countryId}")
+    public CountryResponse getCountryById(@PathVariable("countryId") int countryId) {
+        return countryService.findByIdForResponse(countryId);
+    }
+
+CountryService
+   CountryResponse findByIdForResponse(int id);
+
+CountryServiceImpl
+@Override
+    @Transactional(readOnly = true)
+    public CountryResponse findByIdForResponse(int id) {
+        CountryEntity country = findById(id);
+        return new CountryResponse(country);
+    }

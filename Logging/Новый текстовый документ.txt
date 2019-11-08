@@ -1,0 +1,12 @@
+test->resourse_> application.properties
+
+logging.file=c:/logs/log.log
+
+logging.level.org.springframework.web=ERROR указать тип ERROR, WARN, INFO, DEBUG, TRACE
+logging.level.com.example.demo.controller=ERROR
+
+2) CountryController
+   Logger log = LoggerFactory.getLogger(ContryController.class);
+
+
+java.util.logging.FileHandler.append установлен в true, чтобы старые записи не стирались в файле.

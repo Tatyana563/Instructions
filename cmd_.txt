@@ -1,0 +1,220 @@
+Microsoft Windows [Version 10.0.17134.112]
+(c) Корпорация Майкрософт (Microsoft Corporation), 2018. Все права защищены.
+
+C:\Users\User>javap
+"javap" не является внутренней или внешней
+командой, исполняемой программой или пакетным файлом.
+
+C:\Users\User>cd C:\Program Files\Java\jdk1.8.0_191\bin
+
+C:\Program Files\Java\jdk1.8.0_191\bin>javap
+Usage: javap <options> <classes>
+where possible options include:
+  -help  --help  -?        Print this usage message
+  -version                 Version information
+  -v  -verbose             Print additional information
+  -l                       Print line number and local variable tables
+  -public                  Show only public classes and members
+  -protected               Show protected/public classes and members
+  -package                 Show package/protected/public classes
+                           and members (default)
+  -p  -private             Show all classes and members
+  -c                       Disassemble the code
+  -s                       Print internal type signatures
+  -sysinfo                 Show system info (path, size, date, MD5 hash)
+                           of class being processed
+  -constants               Show final constants
+  -classpath <path>        Specify where to find user class files
+  -cp <path>               Specify where to find user class files
+  -bootclasspath <path>    Override location of bootstrap class files
+
+C:\Program Files\Java\jdk1.8.0_191\bin>javap D:\JAVA\General\out\production\General\lesson\Strings\StringTest.class
+Compiled from "StringTest.java"
+public class lesson.Strings.StringTest {
+  public lesson.Strings.StringTest();
+  public static void main(java.lang.String[]);
+}
+
+C:\Program Files\Java\jdk1.8.0_191\bin>javap -v D:\JAVA\General\out\production\General\lesson\Strings\StringTest.class
+Classfile /D:/JAVA/General/out/production/General/lesson/Strings/StringTest.class
+  Last modified 18.09.2019; size 1202 bytes
+  MD5 checksum ff6e55431ee18c7233937c7c9e269363
+  Compiled from "StringTest.java"
+public class lesson.Strings.StringTest
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #12.#37        // java/lang/Object."<init>":()V
+   #2 = String             #38            // 1
+   #3 = Methodref          #39.#40        // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+   #4 = Class              #41            // java/lang/StringBuilder
+   #5 = Methodref          #4.#37         // java/lang/StringBuilder."<init>":()V
+   #6 = Methodref          #4.#42         // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #7 = Methodref          #4.#43         // java/lang/StringBuilder.toString:()Ljava/lang/String;
+   #8 = String             #44            // 11
+   #9 = Fieldref           #45.#46        // java/lang/System.out:Ljava/io/PrintStream;
+  #10 = Methodref          #47.#48        // java/io/PrintStream.println:(Z)V
+  #11 = Class              #49            // lesson/Strings/StringTest
+  #12 = Class              #50            // java/lang/Object
+  #13 = Utf8               <init>
+  #14 = Utf8               ()V
+  #15 = Utf8               Code
+  #16 = Utf8               LineNumberTable
+  #17 = Utf8               LocalVariableTable
+  #18 = Utf8               this
+  #19 = Utf8               Llesson/Strings/StringTest;
+  #20 = Utf8               main
+  #21 = Utf8               ([Ljava/lang/String;)V
+  #22 = Utf8               args
+  #23 = Utf8               [Ljava/lang/String;
+  #24 = Utf8               string1
+  #25 = Utf8               Ljava/lang/String;
+  #26 = Utf8               string2
+  #27 = Utf8               string2_2
+  #28 = Utf8               string3
+  #29 = Utf8               string4
+  #30 = Utf8               string5
+  #31 = Utf8               StackMapTable
+  #32 = Class              #23            // "[Ljava/lang/String;"
+  #33 = Class              #51            // java/lang/String
+  #34 = Class              #52            // java/io/PrintStream
+  #35 = Utf8               SourceFile
+  #36 = Utf8               StringTest.java
+  #37 = NameAndType        #13:#14        // "<init>":()V
+  #38 = Utf8               1
+  #39 = Class              #51            // java/lang/String
+  #40 = NameAndType        #53:#54        // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #41 = Utf8               java/lang/StringBuilder
+  #42 = NameAndType        #55:#56        // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #43 = NameAndType        #57:#58        // toString:()Ljava/lang/String;
+  #44 = Utf8               11
+  #45 = Class              #59            // java/lang/System
+  #46 = NameAndType        #60:#61        // out:Ljava/io/PrintStream;
+  #47 = Class              #52            // java/io/PrintStream
+  #48 = NameAndType        #62:#63        // println:(Z)V
+  #49 = Utf8               lesson/Strings/StringTest
+  #50 = Utf8               java/lang/Object
+  #51 = Utf8               java/lang/String
+  #52 = Utf8               java/io/PrintStream
+  #53 = Utf8               valueOf
+  #54 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #55 = Utf8               append
+  #56 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #57 = Utf8               toString
+  #58 = Utf8               ()Ljava/lang/String;
+  #59 = Utf8               java/lang/System
+  #60 = Utf8               out
+  #61 = Utf8               Ljava/io/PrintStream;
+  #62 = Utf8               println
+  #63 = Utf8               (Z)V
+{
+  public lesson.Strings.StringTest();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 3: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Llesson/Strings/StringTest;
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=7, args_size=1
+         0: ldc           #2                  // String 1
+         2: astore_1
+         3: ldc           #2                  // String 1
+         5: astore_2
+         6: ldc           #2                  // String 1
+         8: invokestatic  #3                  // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        11: astore_3
+        12: new           #4                  // class java/lang/StringBuilder
+        15: dup
+        16: invokespecial #5                  // Method java/lang/StringBuilder."<init>":()V
+        19: ldc           #2                  // String 1
+        21: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        24: aload_1
+        25: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        28: invokevirtual #7                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        31: astore        4
+        33: ldc           #8                  // String 11
+        35: astore        5
+        37: ldc           #8                  // String 11
+        39: astore        6
+        41: getstatic     #9                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        44: aload         4
+        46: aload         5
+        48: if_acmpne     55
+        51: iconst_1
+        52: goto          56
+        55: iconst_0
+        56: invokevirtual #10                 // Method java/io/PrintStream.println:(Z)V
+        59: getstatic     #9                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        62: aload         4
+        64: aload         6
+        66: if_acmpne     73
+        69: iconst_1
+        70: goto          74
+        73: iconst_0
+        74: invokevirtual #10                 // Method java/io/PrintStream.println:(Z)V
+        77: getstatic     #9                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        80: aload         5
+        82: aload         6
+        84: if_acmpne     91
+        87: iconst_1
+        88: goto          92
+        91: iconst_0
+        92: invokevirtual #10                 // Method java/io/PrintStream.println:(Z)V
+        95: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 3
+        line 46: 6
+        line 47: 12
+        line 48: 33
+        line 49: 37
+        line 51: 41
+        line 52: 59
+        line 53: 77
+        line 56: 95
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      96     0  args   [Ljava/lang/String;
+            3      93     1 string1   Ljava/lang/String;
+            6      90     2 string2   Ljava/lang/String;
+           12      84     3 string2_2   Ljava/lang/String;
+           33      63     4 string3   Ljava/lang/String;
+           37      59     5 string4   Ljava/lang/String;
+           41      55     6 string5   Ljava/lang/String;
+      StackMapTable: number_of_entries = 6
+        frame_type = 255 /* full_frame */
+          offset_delta = 55
+          locals = [ class "[Ljava/lang/String;", class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String ]
+          stack = [ class java/io/PrintStream ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class "[Ljava/lang/String;", class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String ]
+          stack = [ class java/io/PrintStream, int ]
+        frame_type = 80 /* same_locals_1_stack_item */
+          stack = [ class java/io/PrintStream ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class "[Ljava/lang/String;", class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String ]
+          stack = [ class java/io/PrintStream, int ]
+        frame_type = 80 /* same_locals_1_stack_item */
+          stack = [ class java/io/PrintStream ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class "[Ljava/lang/String;", class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String, class java/lang/String ]
+          stack = [ class java/io/PrintStream, int ]
+}
+SourceFile: "StringTest.java"
+
+C:\Program Files\Java\jdk1.8.0_191\bin>

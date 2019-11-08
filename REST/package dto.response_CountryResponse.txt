@@ -1,0 +1,54 @@
+public class CountryResponse {
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Collection<CityResponse> getCities() {
+        return cities;
+    }
+
+    public void setCities(Collection<CityResponse> cities) {
+        this.cities = cities;
+    }
+
+    private Integer id;
+    private String name;
+    private Collection<CityResponse> cities = new ArrayList();
+
+    public CountryResponse(CountryEntity countryEntity) {
+        if (Objects.isNull(countryEntity)) return;
+        this.id = countryEntity.getId();
+        this.name = countryEntity.getName();
+        if (countryEntity.getCities() != null && !countryEntity.getCities().isEmpty()) {
+            countryEntity.getCities().forEach(item->this.cities.add(new CityResponse(item)));
+        }
+    }
+}
+
+
+COUNTRY SERVICE
++
+ Collection<CountryResponse> findAllForRest();
+
+COUNTRY SERVICE IMPL
+ @Override
+    @Transactional(readOnly = true)
+    public Collection<CountryResponse> findAllForRest() {
+
+        Collection<CountryEntity> coutries = countryDao.findAll();
+        if (CollectionUtils.isEmpty(coutries)) return Collections.emptyList();
+        return coutries.stream().map(item->new CountryResponse(item)).collect(Collectors.toList());
+    }

@@ -1,0 +1,12 @@
+@PostMapping
+    public CountryResponse createFromPost(CountryRequest countryRequest) {
+        final CountryEntity countryEntity = new CountryEntity();
+        countryEntity.setName(countryRequest.getName());
+        countryEntity.setPopulation(countryRequest.getPopulation());
+        countryEntity.setCurrency(Currency.valueOf(countryRequest.getCurrency()));
+        countryEntity.setMotherTongue(MotherTongue.valueOf(countryRequest.getLang()));
+        countryEntity.setCity(countryRequest.getCity());
+        countryService.createOrUpdate(countryEntity);
+        final CountryEntity country = countryService.findById(countryEntity.getId());
+        return new CountryResponse(country);
+    }

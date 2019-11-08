@@ -1,0 +1,35 @@
+@ActiveProfiles("postgres")
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class TestCountryController {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @LocalServerPort
+    private int port;
+
+    @Test
+    public void testGetCountry() {
+        ResponseEntity<CountryResponse> responseEntity = restTemplate.getForEntity(URI.create("http://localhost:" + port + "/api/country/40"), CountryResponse.class);
+        System.out.println("status is = " + responseEntity.getStatusCode());
+        System.out.println("country response = " + responseEntity.getBody());
+
+        CountryRequest request = new CountryRequest();
+        request.setName("TestName");
+        request.setCurrency(Currency.EUR.name());
+        request.setLang(MotherTongue.ENGLISH.name());
+        request.setCity("city test");
+        request.setPopulation(1000);
+
+        responseEntity = restTemplate.postForEntity(URI.create("http://localhost:" + port + "/api/country"), request, CountryResponse.class);
+
+        System.out.println("new status is = " + responseEntity.getStatusCode());
+        System.out.println("new country response = " + responseEntity.getBody());
+
+        restTemplate.delete(URI.create("http://localhost:" + port + "/api/country/"+ responseEntity.getBody().getId()));
+
+        //responseEntity = restTemplate.getForEntity(URI.create("http://localhost:" + port + "/api/country/"+responseEntity.getBody().getId()), CountryResponse.class);
+        //System.out.println("status is = " + responseEntity.getStatusCode());
+    }
+}

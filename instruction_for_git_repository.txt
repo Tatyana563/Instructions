@@ -1,0 +1,16 @@
+$ git init
+$ git add .
+если возникла ошибка
+
+warning: LF will be replaced by CRLF in .idea/workspace.xml.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in pom.xml.
+The file will have its original line endings in your working directory
+
+$ git config core.autocrlf true
+
+$ git remote add origin https://github.com/Tatyana563/test_demo_country.git
+$ git commit -m 'Init'
+$ git push -u origin master
+
+Если проблема commit Idea Task manager убрать все прлцессі git

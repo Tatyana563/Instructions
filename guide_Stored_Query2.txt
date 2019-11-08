@@ -1,0 +1,28 @@
+CityDao
+void updateCityArea(int townId, double townArea);
+
+
+CityDaoImpl
+@Override
+    public void updateCityArea(int townId, double townArea) {
+        entityManager.createStoredProcedureQuery("update_town_area")
+                .registerStoredProcedureParameter("p_town_id", Integer.class, ParameterMode.IN)
+                .registerStoredProcedureParameter("p_area", BigDecimal.class, ParameterMode.IN)
+                .setParameter("p_town_id",townId)
+                .setParameter("p_area", new BigDecimal(townArea)).execute();
+    }
+
+CityServece
+ void updateCityArea(int townId, double townArea);
+
+CityServiceImpl
+ @Override
+    @Transactional
+    public void updateCityArea(int townId, double townArea) {
+     cityDao.updateCityArea(townId, townArea);
+    }
+
+@Test
+    public void testUpdateTownArea(){
+        cityService.updateCityArea(1,65.78);
+   }

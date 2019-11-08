@@ -1,0 +1,16 @@
+@Configuration
+public class WebServletConf {
+    @Bean
+    public ServletRegistrationBean<HttpServlet> countryServlet() {
+        ServletRegistrationBean<HttpServlet> servRegBean = new ServletRegistrationBean<>();
+        servRegBean.setServlet(new CountryServlet());
+        servRegBean.addUrlMappings("/country/*", "/api/123/");
+        servRegBean.setLoadOnStartup(1);
+        return servRegBean;
+    }
+
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
+}

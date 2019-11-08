@@ -1,0 +1,32 @@
+Microsoft Windows [Version 10.0.17134.112]
+(c) Корпорация Майкрософт (Microsoft Corporation), 2018. Все права защищены.
+
+C:\Users\User>cd ../..
+
+C:\>cd mkdir temp
+Системе не удается найти указанный путь.
+
+C:\>mkdir temp
+
+C:\>cd temp
+
+C:\temp>echo simple text message > 1.txt
+
+C:\temp>notepad 1.txt
+
+C:\temp>echo simple text message > 1.txt
+
+C:\temp>notepad 1.txt
+
+C:\temp>echo simple text message >> 1.txt
+
+C:\temp>notepad 1.txt
+
+C:\temp>find /d "" < 1.txt
+FIND: Недопустимый ключ
+
+C:\temp>find /v "" < 1.txt
+simple text message
+simple text message
+
+C:\temp>

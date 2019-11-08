@@ -1,0 +1,26 @@
+@RestController
+@RequestMapping("/api/country")
+public class CountryController {
+
+    @Autowired
+    private CountryService countryService;
+    @GetMapping("/add")
+ public CountryResponse create(@RequestParam("name") String name,
+                               @RequestParam("language") String language,
+                               @RequestParam("currency") String currency,
+                               @RequestParam("population") Integer population,
+                               @RequestParam("area") Double area){
+        final CountryEntity countryEntity = new CountryEntity();
+
+        countryEntity.setCountryName(name);
+        countryEntity.setCurrency(Currency.valueOf(currency));
+        countryEntity.setLanguage(Language.valueOf(language));
+        countryEntity.setPopulation(population);
+        countryEntity.setArea(area);
+        countryService.createOrUpdate(countryEntity);
+       final CountryEntity country= countryService.findById(countryEntity.getId()).get();
+return new CountryResponse(country);
+    }
+
+
+}

@@ -1,0 +1,15 @@
+create or replace function update_city_info(p_city_id integer, p_population integer)
+returns integer AS $$
+begin 
+	update city set population = p_population where id = p_city_id;
+	return 1;
+end;
+$$ LANGUAGE plpgsql;
+
+create or replace function update_city_info(p_city_id integer, p_population integer)
+returns integer AS $$
+begin 
+	update city set population = p_population where id = p_city_id;
+	return 1;
+end;
+$$ LANGUAGE plpgsql;

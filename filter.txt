@@ -1,0 +1,29 @@
+CountryDao
+ Collection<CountryEntity> findAllByFilter(Map<FilterKey, Object> filter);
+CountryDaoImpl
+ @Override
+    public Collection<CountryEntity> findAllByFilter(Map<FilterKey, Object> filter) {
+
+        final StringBuilder sql = new StringBuilder("select c from CountryEntity c");
+        final StringBuilder where = new StringBuilder("where 1=1");
+
+        if (filter.containsKey(FilterKey.CITY_AREA)) {
+            sql.append("inner join c.cities cc");
+            where.append("and cc.area<=:cityArea");
+        }
+        Query query = entityManager.createQuery(sql.toString());
+        if (filter.containsKey(FilterKey.CITY_AREA)) {
+            query.setParameter("cityArea", filter.get(FilterKey.CITY_AREA));
+        }
+
+
+        return query.getResultList();
+    }
+CountryService
+ Collection<CountryEntity> findAllByFilter(Map<FilterKey, Object> filter);
+
+CountryServiceImpl
+@Override
+    public Collection<CountryEntity> findAllByFilter(Map<FilterKey, Object> filter) {
+        return countryDao.findAllByFilter(filter);
+    }

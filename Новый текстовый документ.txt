@@ -1,0 +1,14 @@
+select * from building
+
+select countryent0_.id as id1_1_, countryent0_.area as area2_1_, 
+countryent0_.country_id as country_3_1_, countryent0_.country_name as country_4_1_, 
+countryent0_.currency as currency5_1_, countryent0_.language as language6_1_, 
+countryent0_.population as populati7_1_ 
+from country countryent0_ 
+inner join town cities1_ on countryent0_.id=cities1_.country_id 
+inner join street streets2_ on cities1_.id=streets2_.town_id 
+inner join building buildings3_ on streets2_.id=buildings3_.street_id 
+where 1=1 and streets2_.street_name='street5' and buildings3_.material='brick'
+
+
+ÂÑÒÀÂÈÒÜ town_id

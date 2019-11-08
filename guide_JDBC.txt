@@ -1,0 +1,37 @@
+CountryDao
+    Collection<CityEntity> getAllCitiesByCountry(int countryId);
+
+
+CountryDaoImpl
+
+    @Override
+    public Collection<CityEntity> getAllCitiesByCountry(int countryId) {
+        Session session = entityManager.unwrap(Session.class);
+        final Collection<CityEntity> cities = new ArrayList<CityEntity>();
+        session.doWork(connection ->
+        {
+            try (CallableStatement function = connection.prepareCall("{call get_all_cities(?)}")) {
+                function.setInt(1, countryId);
+                ResultSet rs = function.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        CityEntity cityEntity = new CityEntity();
+                        cityEntity.setId(rs.getInt("id"));
+                        cityEntity.setName(rs.getString("town_name"));
+                        cities.add(cityEntity);
+                    }
+                }
+            }
+        });
+        return cities;
+    }
+
+CountryService
+ Collection<CityEntity> getAllCitiesByCountry(int countryId);
+
+CountryServiceImpl
+@Override
+    @Transactional
+    public Collection<CityEntity> getAllCitiesByCountry(int countryId) {
+        return countryDao.getAllCitiesByCountry(countryId);
+    }

@@ -1,0 +1,109 @@
+Microsoft Windows [Version 10.0.17134.112]
+(c) Корпорация Майкрософт (Microsoft Corporation), 2018. Все права защищены.
+
+C:\Users\User>cd /dD:\JAVA\Ekkel\src\chapter18\ReverseLine8.java
+Неверно задано имя папки.
+
+C:\Users\User>cd /d D:\JAVA\Ekkel\src\chapter18
+
+D:\JAVA\Ekkel\src\chapter18>javac ReverseLine8.java
+
+D:\JAVA\Ekkel\src\chapter18>java ReverseLine8
+Error: Could not find or load main class ReverseLine8
+
+D:\JAVA\Ekkel\src\chapter18>java chapter18.ReverseLine8
+Error: Could not find or load main class chapter18.ReverseLine8
+
+D:\JAVA\Ekkel\src\chapter18>cd ..
+
+D:\JAVA\Ekkel\src>java chapter18.ReverseLine8
+[]
+Enter file name:
+
+D:\JAVA\Ekkel\src>javac ReverseLine8.java
+javac: file not found: ReverseLine8.java
+Usage: javac <options> <source files>
+use -help for a list of possible options
+
+D:\JAVA\Ekkel\src>javac chapter18\ReverseLine8
+javac: invalid flag: chapter18\ReverseLine8
+Usage: javac <options> <source files>
+use -help for a list of possible options
+
+D:\JAVA\Ekkel\src>javac chapter18/ReverseLine8
+javac: invalid flag: chapter18/ReverseLine8
+Usage: javac <options> <source files>
+use -help for a list of possible options
+
+D:\JAVA\Ekkel\src>javac chapter18/ReverseLine8.java
+
+D:\JAVA\Ekkel\src>java chapter18.ReverseLine8 10.txt
+[10.txt]
+java.io.FileNotFoundException: 10.txt (Не удается найти указанный файл)
+        at java.io.FileInputStream.open0(Native Method)
+        at java.io.FileInputStream.open(FileInputStream.java:195)
+        at java.io.FileInputStream.<init>(FileInputStream.java:138)
+        at java.io.FileInputStream.<init>(FileInputStream.java:93)
+        at java.io.FileReader.<init>(FileReader.java:58)
+        at chapter18.ReverseLine8.readAndReverse(ReverseLine8.java:22)
+        at chapter18.ReverseLine8.main(ReverseLine8.java:17)
+Exception in thread "main" java.lang.NullPointerException
+        at chapter18.ReverseLine8.readAndReverse(ReverseLine8.java:29)
+        at chapter18.ReverseLine8.main(ReverseLine8.java:17)
+
+D:\JAVA\Ekkel\src>java chapter18.ReverseLine8 D:\JAVA\General\10.txt
+[D:\JAVA\General\10.txt]
+Exception in thread "main" java.io.IOException: Stream closed
+        at java.io.BufferedReader.ensureOpen(BufferedReader.java:122)
+        at java.io.BufferedReader.readLine(BufferedReader.java:317)
+        at java.io.BufferedReader.readLine(BufferedReader.java:389)
+        at chapter18.ReverseLine8.readAndReverse(ReverseLine8.java:29)
+        at chapter18.ReverseLine8.main(ReverseLine8.java:17)
+
+D:\JAVA\Ekkel\src>java chapter18.ReverseLine8 D:\JAVA\General\10.txt
+[D:\JAVA\General\10.txt]
+Exception in thread "main" java.io.IOException: Stream closed
+        at java.io.BufferedReader.ensureOpen(BufferedReader.java:122)
+        at java.io.BufferedReader.readLine(BufferedReader.java:317)
+        at java.io.BufferedReader.readLine(BufferedReader.java:389)
+        at chapter18.ReverseLine8.readAndReverse(ReverseLine8.java:29)
+        at chapter18.ReverseLine8.main(ReverseLine8.java:17)
+
+D:\JAVA\Ekkel\src>javac chapter18/ReverseLine8.java
+
+D:\JAVA\Ekkel\src>java chapter18.ReverseLine8 D:\JAVA\General\10.txt
+[D:\JAVA\General\10.txt]
+APPLE
+LEMON
+PEAR
+
+
+D:\JAVA\Ekkel\src>java chapter18.ReverseLine8 D:\JAVA\General\10.txt
+[D:\JAVA\General\10.txt]
+APPLE
+LEMON
+PEAR
+
+
+D:\JAVA\Ekkel\src>javac chapter18/ReverseLine8.java
+
+D:\JAVA\Ekkel\src>java chapter18.ReverseLine8 10.txt
+[10.txt]
+java.io.FileNotFoundException: 10.txt (Не удается найти указанный файл)
+        at java.io.FileInputStream.open0(Native Method)
+        at java.io.FileInputStream.open(FileInputStream.java:195)
+        at java.io.FileInputStream.<init>(FileInputStream.java:138)
+        at java.io.FileInputStream.<init>(FileInputStream.java:93)
+        at java.io.FileReader.<init>(FileReader.java:58)
+        at chapter18.ReverseLine8.readAndReverse(ReverseLine8.java:20)
+        at chapter18.ReverseLine8.main(ReverseLine8.java:17)
+null
+
+D:\JAVA\Ekkel\src>java chapter18.ReverseLine8 D:\JAVA\General\10.txt
+[D:\JAVA\General\10.txt]
+PEAR
+LEMON
+APPLE
+
+
+D:\JAVA\Ekkel\src>

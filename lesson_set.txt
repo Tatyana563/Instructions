@@ -1,0 +1,29 @@
+Set<CityEntity> arrayList = new HashSet<>();
+        CityEntity c1 = new CityEntity();
+        c1.setId(1);
+                c1.setName("123");
+        CityEntity c2 = new CityEntity();
+                c2.setName("123");
+        c2.setId(2);
+                CityEntity c3= new CityEntity();
+                c3.setName("123");
+        c3.setId(3);
+        arrayList.add(c1);
+        arrayList.add(c2);
+        arrayList.add(c3);
+
+        for (CityEntity city:arrayList) {
+            arrayList.add(new CityEntity());
+                    arrayList.remove();
+        }
+
+        Map<Integer, CityEntity> map = new HashMap();
+        map.put(c1.getId(), c1);
+        map.put(c2.getId(), c2);
+        map.put(c3.getId(), c3);
+        System.out.println(map.get(3));
+
+    }
+
+
+}

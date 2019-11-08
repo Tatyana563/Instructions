@@ -1,0 +1,8 @@
+ ALTER TABLE town
+ ADD CONSTRAINT constraint_country_id
+ FOREIGN KEY (country_id)
+  REFERENCES country(id)
+ ON UPDATE CASCADE;
+
+ALTER TABLE country 
+ ADD PRIMARY KEY (country_id);

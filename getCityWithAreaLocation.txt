@@ -1,0 +1,45 @@
+PROJECT1
+**********************
+CountryDao
+ String getCityWithAreaLocation(int countryId, CityLocation cityLocation, Double area);
+
+CountryDaoIml
+@Override
+    public String getCityWithAreaLocation(int countryId, CityLocation cityLocation, Double area) {
+        //"call get_city_with_area_location(?)"
+        return (String) entityManager.createStoredProcedureQuery("get_city_with_area_location")
+                .registerStoredProcedureParameter("p_country_id", Integer.class, ParameterMode.IN)
+                .registerStoredProcedureParameter("p_location", String.class, ParameterMode.IN)
+                .registerStoredProcedureParameter("p_area", BigDecimal.class, ParameterMode.IN)
+                .setParameter("p_country_id", countryId)
+                .setParameter("p_location", cityLocation.name())
+                .setParameter("p_area", new BigDecimal(area))
+                .getSingleResult();
+    }
+
+CountryService
+String getCityWithAreaLocation(int countryId, CityLocation cityLocation, Double area);
+
+CountryServiceImpl
+@Override
+    public String getCityWithAreaLocation(int countryId, CityLocation cityLocation, Double area) {
+        return countryDao.getCityWithAreaLocation(countryId, cityLocation, area);
+    }
+
+   @Test
+    public void testFunction2(){
+       System.out.println(countryService.getCityWithAreaLocation(1, CityLocation.north, 20.0));
+
+POSTGRESQL
+
+create or replace function get_city_with_area_location(p_country_id integer)
+returns character varying
+AS $$
+declare l_town_name character varying(100);
+begin
+select town_name into l_town_name
+from town where country_id=p_country_id AND area>20 AND location='north';
+
+return l_town_name;
+end;
+$$ LANGUAGE plpgsql;

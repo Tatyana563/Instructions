@@ -1,0 +1,34 @@
+DOWNLOAD TOMCAT APPLICATIONSERVER (to make app always running)
+String has embedded Tomcac thats why app ran previously without downloading
+
+Create package controller
+@RestController
+@RequestMapping("/api/country")
+public class ContryController {
+
+    @Autowired
+    private CountryService countryService;
+
+    /**
+     *
+     * {
+     *     "id":100,
+     *     "name":"name"
+     * }
+     *
+     */
+
+    @GetMapping("{countryId}")
+    public CountryResponse getCountryById(
+
+    @GetMapping("/all")
+    public Collection<CountryResponse> getAllCountries() {
+           return countryService.findAllForRest();
+    }
+
+    @GetMapping("/not-all")
+    public Collection<CountryEntity> getAllCountries2() {
+           return countryService.findAll(0, 4);
+    }
+
+}

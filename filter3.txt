@@ -1,0 +1,40 @@
+Countrydao
+Collection<CountryEntity> findAllByFilter3(Map<FilterKey, Object> filter);
+
+CountryDaoImpl
+ public Collection<CountryEntity> findAllByFilter3(Map<FilterKey, Object> filter) {
+        final StringBuilder sql = new StringBuilder(" select c from CountryEntity c ");
+        final StringBuilder where = new StringBuilder(" where 1=1 ");
+        if (filter.containsKey(FilterKey.CITY_LOCATION)) {
+            sql.append(" inner join c.cities cc ");
+         where.append(" and cc.location=:cityLocation ");
+        }
+        if(filter.containsKey(FilterKey.BUILDING_HEIGH)) {
+            if (!filter.containsKey(FilterKey.CITY_LOCATION)) {
+                System.out.println("No city from this location");
+            } else {
+                sql.append(" inner join cc.streets st ");
+                sql.append(" inner join st.buildings bl ");
+                where.append(" and bl.height=:buildingHeight ");
+            }
+        }
+
+        Query query = entityManager.createQuery(sql.append(where).toString());
+        if(filter.containsKey(FilterKey.CITY_LOCATION)){
+            query.setParameter("cityLocation", filter.get(FilterKey.CITY_LOCATION));
+        }
+        if(filter.containsKey(FilterKey.BUILDING_HEIGH)){
+          query.setParameter("buildingHeight",filter.get(FilterKey.BUILDING_HEIGH));
+        }
+        return query.getResultList();
+    }
+
+
+CountryService
+ Collection<CountryEntity> findAllByFilter3(Map<FilterKey, Object> filter);
+
+CountryServiceImpl
+@Override
+    public Collection<CountryEntity> findAllByFilter3(Map<FilterKey, Object> filter) {
+        return countryDao.findAllByFilter3(filter);
+    }

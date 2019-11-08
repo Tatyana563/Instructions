@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<form method="post" action="http://localhost:8080/api/country">
+  <input type="text" name="name" placeholder="Enter country name" required/>
+  <input type="text" name="language" placeholder="Enter language" required/>
+  <input type="text" name="currency" placeholder="Enter currency" required/>
+  <input type="text" name="population" placeholder="Enter population" required/>
+  <input type="text" name="area" placeholder="Enter area" required/>
+  <input type="submit" value="create a country"/>
+</form>
+</body>
+</html>

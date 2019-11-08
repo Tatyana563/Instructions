@@ -1,0 +1,18 @@
+1. RootdemoAppl
+
+public class RootDemoApplication extends SpringBootServletInitializer 
+
+2. Add <packaging>war</packaging> to pom.xml
+3. Marven
+Clean, ligting(without test), install
+
+3. Install Tomcat 9
+C:\Program Files\Java\jre-10.0.1
+C:\Program Files\Apache Software Foundation\Tomcat 9.0
+
+4. In Idea click "Show path" on the .war file in target.
+Copy the file and paste into webapps in Tomcat
+
+(See example D:\server\apache-tomcat-8.5.43)
+
+5. Tomcat->bin->startup.bat

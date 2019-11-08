@@ -1,0 +1,55 @@
+CityDao
+ void updateCityInfo(int cityId, int population);
+
+CityDaoImpl
+@Override
+    public void updateCityInfo(int cityId, int population) {
+entityManager.createNamedStoredProcedureQuery("updateCityInfo")
+                .setParameter("p_city_id", cityId)
+                .setParameter("p_population", population).execute();
+    }
+
+CityService
+void updateCityInfo(int cityId, int population);
+
+CityServiceImpl
+@Override
+    @Transactional
+    public void updateCityInfo(int cityId, int population) {
+    cityDao.updateCityInfo(cityId, population);
+
+Test
+cityService.updateCityInfo(2, 1002);
+
+
+CityEntity
+@NamedStoredProcedureQueries(
+        @NamedStoredProcedureQuery(
+                name = "updateCityInfo",
+                procedureName = "update_city_info",
+                parameters = {
+                        @StoredProcedureParameter(name = "p_city_id",
+                        type = Integer.class,
+                        mode = ParameterMode.IN),
+                        @StoredProcedureParameter(name = "p_population",
+                        type = Integer.class,
+                        mode = ParameterMode.IN)
+                }
+        )
+)
+
+Variant2  REPOSITORY
+ @Procedure("update_city_info")
+    void updateInfo(@Param("p_city_id") int cityId, @Param("p_population")
+
+CityServiceImpl
+
+    @Autowired
+    private CityRepository cityRepository;
+
+ @Override
+    @Transactional
+    public void updateCityInfo(int cityId, int population) {
+      
+        cityRepository.updateInfo(cityId, population);
+

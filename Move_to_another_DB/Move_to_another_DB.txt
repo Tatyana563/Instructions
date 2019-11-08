@@ -1,0 +1,39 @@
+@Configuration
+@EnableJpaRepositories(basePackages="com.example.demo.repository")
+@Profile("h2")
+public class DBH2Config {
+    @Bean
+    public DataSource dataSource() {
+        HikariConfig dataSource = new HikariConfig();
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
+        dataSource.setJdbcUrl(
+                "jdbc:h2:mem:demo;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS UTL_MATCH\\;CREATE SCHEMA IF NOT EXISTS demo\\;SET SCHEMA demo;MVCC=true");
+
+        return new HikariDataSource(dataSource);
+    }
+
+    @Bean
+    LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactoryBean.setDataSource(dataSource);
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setDatabase(Database.H2);
+        entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
+        entityManagerFactoryBean.setPackagesToScan("com.example.demo");
+
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        jpaProperties.put("hibernate.hbm2ddl.auto", "create");
+        jpaProperties.put("hibernate.show_sql", "true");
+        entityManagerFactoryBean.setJpaProperties(jpaProperties);
+        return entityManagerFactoryBean;
+    }
+}
+
+in @TEST
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@ActiveProfiles("h2")

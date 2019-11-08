@@ -1,0 +1,72 @@
+1. Help-> Install new softeware->add  http://download.eclipse.org/releases/kepler->web-> accept
+2. File new -> other-?servr->tomcat 8.5-? next-> найти куда скачали tomcat (https://tomcat.apache.org/download-80.cgi)- jdk 1.8
+3.Нажмем правой кнопкой мыши на папку Java Resources/src new->servlet->clas name (HelloServlet);
+4. File-> new-? html.(form.html)
+5. Create protected BlogController.java
+ void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		File file = new File("C:\\Users\\User\\eclipse-workspace\\Miniblog\\WebContent\\form.html");
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		
+		String line = "";
+		String content = "";
+		while ((line = br.readLine()) != null) {
+			content += line + "\r\n";
+		}
+		
+		response.getWriter().append(content);
+	}
+6. Create Class Blog.java
+public class Blog {
+	
+	private String title;
+	
+	private String body;
+	
+	private String author;
+	
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getBody() {
+		return body;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+}
+7. Create form html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="/Miniblog/blog" method="POST">
+	<div>
+		<label>Title</label><input type="text" name="title">
+	</div>
+	<div>
+		<label>Body</label><input type="text" name="body">
+	</div>
+	<div>
+		<label>Author</label><input type="text" name="author">
+	</div>
+	<div>
+		<input type="submit">
+	</div>
+</form>
+</body>
+</html>
+

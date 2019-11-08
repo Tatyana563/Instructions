@@ -1,0 +1,19 @@
+CountryDao
+Integer getMaxCityPopulationByCountry(int countryId);
+
+CountryDaoImpl
+@Override
+    public Integer getMaxCityPopulationByCountry(int countryId) {
+ return (Integer) entityManager.createStoredProcedureQuery("get_max_city_population")
+                .registerStoredProcedureParameter("p_country_id", Integer.class, ParameterMode.IN)
+                .getSingleResult();
+
+    }
+
+CountryService
+   Integer getMaxCityPopulationByCountry(int countryId);
+
+@Override
+    public Integer getMaxCityPopulationByCountry(int countryId) {
+        return countryDao.getMaxCityPopulationByCountry(countryId);
+    }

@@ -1,0 +1,152 @@
+1.Create prinmary Key
+
+ALTER TABLE country 
+ ADD PRIMARY KEY (country_id);
+
+2. Create Foreign key
+ ALTER TABLE town
+ ADD CONSTRAINT constraint_country_id
+ FOREIGN KEY (country_id)
+  REFERENCES country(id)
+ ON UPDATE CASCADE;
+
+3. Insert some values
+insert into street ("town_id","street_name","id","description")
+values('1','street3','0','polluted');
+
+4.Alter table
+
+ALTER TABLE building
+
+ADD COLUMN building_name VARCHAR(100),
+ ADD COLUMN building_type VARCHAR(100),
+ ADD COLUMN street VARCHAR(100),
+ ADD COLUMN floor smallint,
+ ADD COLUMN material VARCHAR(100),
+ ADD COLUMN height NUMERIC(10,2);
+
+5. Make column NOT NULL
+ALTER TABLE building ALTER COLUMN building_type SET NOT NULL;
+
+6. Delete
+delete from city where id = 15
+
+7. Grouping
+
+select count(id), country_name  from countries group by country_name having count(id) > 1
+
+ 
+8. Create sequence serialcity START 1
+UPDATE city SET id = nextval('serialcity')
+select* from city;
+
+9.Update values
+update building set town_id = 1 where id = 10
+
+10. Grouping set
+SELECT
+    fruit_name,
+    SUM (kg)
+FROM
+    fruit
+GROUP BY
+   fruit_name;
+11. Select customers who has one bill more then 40. (no foreign key is required)
+
+   SELECT first_name,
+         last_name
+ FROM customer c
+  WHERE EXISTS
+      (SELECT 1
+       FROM ordertable o
+       WHERE c.customer_id = o.customer_id
+       AND amount > 40 )
+  ORDER BY first_name,
+ last_name;
+
+12. Add orders to the table of customers
+
+SELECT
+ c.*,
+ o.*
+FROM
+customer as c 
+LEFT JOIN ordertable as o ON c.customer_id = o.customer_id ;
+
+13. Use Jeft join, customer name from the first table + bill from the second
+
+SELECT
+c.customer_id,c.first_name,
+o.amount
+FROM
+customer as c 
+LEFT JOIN ordertable as o ON c.customer_id = o.customer_id ;
+
+14. Inner join
+
+select first_name, last_name, order_date, amount
+from customer c
+inner join ordertable o
+on c.customer_id = o.customer_id
+
+15. Select between two values
+select 
+first_name, customer_id
+from customer
+where customer_id between '19' and '21';
+
+16. Select all orders which are more then the avarage amount
+
+SELECT
+order_id, amount
+FROM
+ordertable
+WHERE
+ amount >(
+ SELECT
+ AVG (amount)
+ FROM
+ ordertable
+ );
+
+17. Find customers from the first table whose bill in the second column is between 60 and 250.
+SELECT
+ c.customer_id, o.amount
+FROM
+customer as c
+INNER JOIN ordertable as o ON c.customer_id = o.customer_id
+WHERE
+ amount BETWEEN '60'
+AND '250';
+
+18. Delete all values from the second table which are in the first one.
+
+ DELETE FROM fruit
+ USING fruit2
+ WHERE fruit.fruit_name = fruit2.fruit_name;
+select* from fruit
+
+19. Select all countries which are joinde with cities
+select * from countries as cn 
+inner join city as ct on ct.country_id = cn.id
+
+20. Count the number of rows in the table;
+select count(*) from countries
+
+21. In the ascending order(id), take 4 after skipping 3 first
+select * from countries order by id asc limit 4 offset 3
+22.
+SELECT p.street_id as person_street_id, st.street_id as street_id FROM person p, street st where p.street_id = st.street_id
+
+select p.* from person p where p.street_id is not null
+
+select distinct st.* from street st inner join person p on p.street_id = st.street_id
+
+select distinct st.* from street st, person p where p.street_id = st.street_id
+
+select st.* from street st 
+inner join (select count(p.user_id) as cnt, p.street_id from person p group by street_id having count(p.user_id) >= 2) as stat
+on st.street_id = stat.street_id
+
+
+select count(p.user_id) cnt, p.street_id from person p group by street_id having count(p.user_id) >= 2;

@@ -1,0 +1,197 @@
+Microsoft Windows [Version 10.0.17134.112]
+(c) Êîðïîðàöèÿ Ìàéêðîñîôò (Microsoft Corporation), 2018. Âñå ïðàâà çàùèùåíû.
+
+C:\Users\User>cd c:\
+
+c:\>cd C:\Program Files\Java\jdk1.8.0_191\bin
+
+C:\Program Files\Java\jdk1.8.0_191\bin>javap
+Usage: javap <options> <classes>
+where possible options include:
+  -help  --help  -?        Print this usage message
+  -version                 Version information
+  -v  -verbose             Print additional information
+  -l                       Print line number and local variable tables
+  -public                  Show only public classes and members
+  -protected               Show protected/public classes and members
+  -package                 Show package/protected/public classes
+                           and members (default)
+  -p  -private             Show all classes and members
+  -c                       Disassemble the code
+  -s                       Print internal type signatures
+  -sysinfo                 Show system info (path, size, date, MD5 hash)
+                           of class being processed
+  -constants               Show final constants
+  -classpath <path>        Specify where to find user class files
+  -cp <path>               Specify where to find user class files
+  -bootclasspath <path>    Override location of bootstrap class files
+
+C:\Program Files\Java\jdk1.8.0_191\bin>cd D:\JAVA\homework\CollectionHW\out\production\main\oop
+
+C:\Program Files\Java\jdk1.8.0_191\bin>javap -v NumberStored.class
+Error: class not found: NumberStored.class
+
+C:\Program Files\Java\jdk1.8.0_191\bin>cd D:\JAVA\homework\CollectionHW\out\production\main\oop
+
+C:\Program Files\Java\jdk1.8.0_191\bin>javap -v NumberStored.class
+Classfile /C:/Program Files/Java/jdk1.8.0_191/bin/NumberStored.class
+  Last modified 01.09.2019; size 665 bytes
+  MD5 checksum aaa334216ceb54e85fe4bfe08681d533
+  Compiled from "NumberStored.java"
+public class oop.NumberStored<T extends java.lang.Object> extends java.lang.Object
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #4.#25         // java/lang/Object."<init>":()V
+   #2 = Fieldref           #3.#26         // oop/NumberStored.value:Ljava/lang/Object;
+   #3 = Class              #27            // oop/NumberStored
+   #4 = Class              #28            // java/lang/Object
+   #5 = Utf8               value
+   #6 = Utf8               Ljava/lang/Object;
+   #7 = Utf8               Signature
+   #8 = Utf8               TT;
+   #9 = Utf8               <init>
+  #10 = Utf8               (Ljava/lang/Object;)V
+  #11 = Utf8               Code
+  #12 = Utf8               LineNumberTable
+  #13 = Utf8               LocalVariableTable
+  #14 = Utf8               this
+  #15 = Utf8               Loop/NumberStored;
+  #16 = Utf8               LocalVariableTypeTable
+  #17 = Utf8               Loop/NumberStored<TT;>;
+  #18 = Utf8               (TT;)V
+  #19 = Utf8               getValue
+  #20 = Utf8               ()Ljava/lang/Object;
+  #21 = Utf8               ()TT;
+  #22 = Utf8               <T:Ljava/lang/Object;>Ljava/lang/Object;
+  #23 = Utf8               SourceFile
+  #24 = Utf8               NumberStored.java
+  #25 = NameAndType        #9:#29         // "<init>":()V
+  #26 = NameAndType        #5:#6          // value:Ljava/lang/Object;
+  #27 = Utf8               oop/NumberStored
+  #28 = Utf8               java/lang/Object
+  #29 = Utf8               ()V
+{
+  public oop.NumberStored(T);
+    descriptor: (Ljava/lang/Object;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #2                  // Field value:Ljava/lang/Object;
+         9: return
+      LineNumberTable:
+        line 6: 0
+        line 7: 4
+        line 8: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Loop/NumberStored;
+            0      10     1 value   Ljava/lang/Object;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Loop/NumberStored<TT;>;
+            0      10     1 value   TT;
+    Signature: #18                          // (TT;)V
+
+  public T getValue();
+    descriptor: ()Ljava/lang/Object;
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #2                  // Field value:Ljava/lang/Object;
+         4: areturn
+      LineNumberTable:
+        line 11: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Loop/NumberStored;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Loop/NumberStored<TT;>;
+    Signature: #21                          // ()TT;
+}
+Signature: #22                          // <T:Ljava/lang/Object;>Ljava/lang/Object;
+SourceFile: "NumberStored.java"
+
+C:\Program Files\Java\jdk1.8.0_191\bin> cd d:
+D:\JAVA\homework\CollectionHW\out\production\main\oop
+
+C:\Program Files\Java\jdk1.8.0_191\bin>cd d
+Ñèñòåìå íå óäàåòñÿ íàéòè óêàçàííûé ïóòü.
+
+C:\Program Files\Java\jdk1.8.0_191\bin>cd D:
+D:\JAVA\homework\CollectionHW\out\production\main\oop
+
+C:\Program Files\Java\jdk1.8.0_191\bin>dir
+ Òîì â óñòðîéñòâå C èìååò ìåòêó Windows 10
+ Ñåðèéíûé íîìåð òîìà: 5C10-41C5
+
+ Ñîäåðæèìîå ïàïêè C:\Program Files\Java\jdk1.8.0_191\bin
+
+Âñ 01.09.19  16:09    <DIR>          .
+Âñ 01.09.19  16:09    <DIR>          ..
+Ñá 10.11.18  14:00            16 728 appletviewer.exe
+Ñá 10.11.18  14:00            17 240 extcheck.exe
+Ñá 10.11.18  14:00            17 240 idlj.exe
+Ñá 10.11.18  14:00            35 160 jabswitch.exe
+Ñá 10.11.18  14:00            16 728 jar.exe
+Ñá 10.11.18  14:00            17 240 jarsigner.exe
+Ñá 10.11.18  14:00            16 728 java-rmi.exe
+Ñá 10.11.18  14:00           207 704 java.exe
+Ñá 10.11.18  14:00            16 728 javac.exe
+Ñá 10.11.18  14:00            17 240 javadoc.exe
+Ñá 10.11.18  14:00           149 336 javafxpackager.exe
+Ñá 10.11.18  14:00            16 728 javah.exe
+Ñá 10.11.18  14:00            16 728 javap.exe
+Ñá 10.11.18  14:00           149 336 javapackager.exe
+Ñá 10.11.18  14:00           208 216 javaw.exe
+Ñá 10.11.18  14:00           354 136 javaws.exe
+Ñá 10.11.18  14:00            16 728 jcmd.exe
+Ñá 10.11.18  14:00            17 752 jconsole.exe
+Ñá 10.11.18  14:00            17 240 jdb.exe
+Ñá 10.11.18  14:00            16 728 jdeps.exe
+Ñá 10.11.18  14:00            16 728 jhat.exe
+Ñá 10.11.18  14:00            17 240 jinfo.exe
+Ñá 10.11.18  14:00            16 728 jjs.exe
+Ñá 10.11.18  14:00           175 960 jli.dll
+Ñá 10.11.18  14:00            17 240 jmap.exe
+Ñá 10.11.18  14:00           322 392 jmc.exe
+Ñá 10.11.18  14:00               417 jmc.ini
+Ñá 10.11.18  14:00            16 728 jps.exe
+Ñá 10.11.18  14:00            17 240 jrunscript.exe
+Ñá 10.11.18  14:00            17 240 jsadebugd.exe
+Ñá 10.11.18  14:00            17 240 jstack.exe
+Ñá 10.11.18  14:00            16 728 jstat.exe
+Ñá 10.11.18  14:00            16 728 jstatd.exe
+Ñá 10.11.18  14:00           197 464 jvisualvm.exe
+Ñá 10.11.18  14:00            17 240 keytool.exe
+Ñá 10.11.18  14:00            17 240 kinit.exe
+Ñá 10.11.18  14:00            17 240 klist.exe
+Ñá 10.11.18  14:00            17 240 ktab.exe
+Ñá 10.11.18  14:00           829 264 msvcr100.dll
+Ñá 10.11.18  14:00            17 240 native2ascii.exe
+Âñ 01.09.19  16:04               665 NumberStored.class
+Ñá 10.11.18  14:00            17 240 orbd.exe
+Ñá 10.11.18  14:00            17 240 pack200.exe
+Ñá 10.11.18  14:00            17 240 policytool.exe
+Ñá 10.11.18  14:00            16 728 rmic.exe
+Ñá 10.11.18  14:00            16 728 rmid.exe
+Ñá 10.11.18  14:00            17 240 rmiregistry.exe
+Ñá 10.11.18  14:00            17 240 schemagen.exe
+Ñá 10.11.18  14:00            17 240 serialver.exe
+Ñá 10.11.18  14:00            17 240 servertool.exe
+Ñá 10.11.18  14:00            17 240 tnameserv.exe
+Ñá 10.11.18  14:00           200 536 unpack200.exe
+Ñá 10.11.18  14:00            16 728 wsgen.exe
+Ñá 10.11.18  14:00            17 240 wsimport.exe
+Ñá 10.11.18  14:00            17 240 xjc.exe
+              55 ôàéëîâ      3 546 986 áàéò
+               2 ïàïîê  15 661 133 824 áàéò ñâîáîäíî
+
+C:\Program Files\Java\jdk1.8.0_191\bin>javap -v NumberStored.class

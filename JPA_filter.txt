@@ -1,0 +1,71 @@
+1. Create package Filter in repository
+Create class FilterSpecifications
+blic class FilterSpecifications {
+
+    private FilterSpecifications() {
+    }
+
+    
+    public static Specification<CountryEntity> nameBy(final String name) {
+        Specification specif = new Specification<CountryEntity>() {
+            @Override
+            public Predicate toPredicate(Root<CountryEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get("name"), name);
+            }
+        };
+        return specif;
+    }
+
+    public static Specification<CountryEntity> cityTypeBy(final CityType type) {
+        Specification specif = new Specification<CountryEntity>() {
+            @Override
+            public Predicate toPredicate(Root<CountryEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Join<CountryEntity, CityEntity> cities = root.join("cities");
+                return criteriaBuilder.equal(cities.get("type"), type);
+            }
+        };
+        return specif;
+    }
+
+    public static Specification<CountryEntity> cityPopulationBy(final int population) {
+        Specification specif = new Specification<CountryEntity>() {
+            @Override
+            public Predicate toPredicate(Root<CountryEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Join<CountryEntity, CityEntity> cities = root.join("cities");
+                return criteriaBuilder.equal(cities.get("population"), population);
+            }
+        };
+        return specif;
+    }
+
+    public static Specification<CountryEntity> streetNameBy(final String streetName) {
+        Specification specif = new Specification<CountryEntity>() {
+            @Override
+            public Predicate toPredicate(Root<CountryEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Join<CountryEntity, CityEntity> cities = root.join("cities");
+                Join<CityEntity, StreetEntity> streets = cities.join("streets");
+                return criteriaBuilder.equal(streets.get("name"), streetName);
+            }
+        };
+        return specif;
+    }
+
+}
+
+CountryService
+ Collection<CountryEntity> findAll(Specification specification);
+
+CountryServiceImpl
+@Override
+    public Collection<CountryEntity> findAll(Specification specification) {
+        return countryRepository.findAll(specification);
+    }
+
+@Test{
+ System.out.println(countryService.findAll(
+            FilterSpecifications.nameBy("Japan4")
+        .and(FilterSpecifications.cityTypeBy(CityType.metropolis))
+            .and(FilterSpecifications.streetNameBy("street2"))
+            )
+    );
+}

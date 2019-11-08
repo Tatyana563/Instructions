@@ -1,0 +1,42 @@
+CountryDao
+  void updateCountryCurrency(int countryId, Currency currency);
+
+CountryDaoImpl
+  @Override
+    public void updateCountryCurrency(int countryId, Currency currency) {
+        entityManager.createNamedStoredProcedureQuery("updateCurrency")
+                .setParameter("p_country_id", countryId)
+                .setParameter("p_currency", currency.name()).execute();
+    }
+
+CountryEntity
+@NamedStoredProcedureQueries(
+        @NamedStoredProcedureQuery(
+                name="updateCurrency",
+                procedureName = "update_country_currency",
+                parameters = {
+                        @StoredProcedureParameter(name = "p_country_id",type=Integer.class,
+                        mode=ParameterMode.IN),
+                        @StoredProcedureParameter(name="p_currency", type=String.class,
+                        mode=ParameterMode.IN)
+                }
+
+        )
+)
+
+CountryService
+ void updateCountryCurrency(int countryId, Currency currency);
+
+CountryServiceImpl
+@Override
+    @Transactional
+    public void updateCountryCurrency(int countryId, Currency currency) {
+       countryDao.updateCountryCurrency(countryId,currency);
+    }
+
+TEST
+@Test
+    public void testUpdateCountryCurrency(){
+        countryService.updateCountryCurrency(1, Currency.DM);
+   }
+}
