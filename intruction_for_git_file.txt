@@ -7,6 +7,10 @@ $ git add .
 $ git commit -m "First commit"
 $ git push origin master
 
+For the second time, when 1 file was added
+
+git push -f origin master
+
 
 
 
