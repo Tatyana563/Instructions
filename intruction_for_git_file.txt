@@ -1,0 +1,14 @@
+$ ls
+$ cd "D:\JAVA\Java guide"
+$ git init
+$ git remote add origin https://github.com/Tatyana563/Instructions.git
+$ git remote -v
+$ git add .
+$ git commit -m "First commit"
+$ git push origin master
+
+
+
+
+
+
